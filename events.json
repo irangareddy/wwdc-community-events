@@ -1,0 +1,278 @@
+[
+    {
+      "date": "2024-06-08T00:00:00.000Z",
+      "events": [
+        {
+          "title": "Informal Pre-WWDC 24 Gathering in San Pedro Square",
+          "description": "An informal gathering for WWDC attendees to meet and mingle.",
+          "link": "https://pre-wwdc24-gathering.splashthat.com",
+          "eventType": "meetup",
+          "startTime": "2024-06-08T17:00:00.000Z",
+          "endTime": "2024-06-08T20:00:00.000Z",
+          "requiresTicket": false,
+          "capacity": "unlimited",
+          "organizer": {
+            "name": "Community",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        }
+      ]
+    },
+    {
+      "date": "2024-06-09T00:00:00.000Z",
+      "events": [
+        {
+          "title": "r/VisionPro Coffee Meetup",
+          "description": "Join fellow r/VisionPro members for coffee and casual discussions about WWDC.",
+          "link": "https://www.reddit.com/r/VisionPro/comments/1cmg3pj/wwdc24_rvisionpro_meetup/",
+          "eventType": "meetup",
+          "startTime": "2024-06-09T09:00:00.000Z",
+          "endTime": "2024-06-09T10:00:00.000Z",
+          "requiresTicket": false,
+          "capacity": "unlimited",
+          "organizer": {
+            "name": "r/VisionPro",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        },
+        {
+          "title": "Core Coffee – WWDC Edition",
+          "description": "Join the Core Coffee meetup group for a WWDC-themed edition of their regular meetup.",
+          "link": "https://www.meetup.com/core-coffee-a-catch-up-for-ios-and-macos-developers/events/300224553/",
+          "eventType": "meetup",
+          "startTime": "2024-06-09T12:00:00.000Z",
+          "endTime": "2024-06-09T14:00:00.000Z",
+          "requiresTicket": false,
+          "capacity": "unlimited",
+          "organizer": {
+            "name": "Core Coffee",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        },
+        {
+          "title": "WWDC Check-in, refreshments, and games at Infinite Loop",
+          "description": "Check in for WWDC, grab refreshments, and enjoy some games at Apple's Infinite Loop campus.",
+          "link": "https://developer.apple.com/wwdc24/",
+          "eventType": "conference",
+          "startTime": "2024-06-09T15:00:00.000Z",
+          "endTime": "2024-06-09T19:00:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "Apple",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        },
+        {
+          "title": "RevenueCat's Barcade Bash",
+          "description": "Join RevenueCat for an evening of games and networking at a local barcade.",
+          "link": "https://rcwwdc24.rsvpify.com/?securityToken=no1ZqQkqUPr5TnZvsayP3U5kcLpd3Mc3",
+          "eventType": "meetup",
+          "startTime": "2024-06-09T18:30:00.000Z",
+          "endTime": "2024-06-09T22:30:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "RevenueCat",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        }
+      ]
+    },
+    {
+      "date": "2024-06-10T00:00:00.000Z",
+      "events": [
+        {
+          "title": "Special Event at Apple Park",
+          "description": "Attend a special event at Apple Park during WWDC.",
+          "link": "https://developer.apple.com/wwdc24/special-event/",
+          "eventType": "conference",
+          "startTime": "2024-06-10T00:00:00.000Z",
+          "endTime": "2024-06-10T23:59:59.999Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "Apple",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        },
+        {
+          "title": "One More Thing conference keynote stream",
+          "description": "Watch the keynote stream for the One More Thing conference.",
+          "link": "https://omt-conf.com/",
+          "eventType": "conference",
+          "startTime": "2024-06-10T00:00:00.000Z",
+          "endTime": "2024-06-10T23:59:59.999Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "One More Thing",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        },
+        {
+          "title": "Go to pub after Special Event",
+          "description": "Join fellow developers for drinks at a local pub after the Apple Park event.",
+          "link": "https://locals.org/go-to-pub-after-special-event-wwdc24-clle",
+          "eventType": "meetup",
+          "startTime": "2024-06-10T00:00:00.000Z",
+          "endTime": "2024-06-10T23:59:59.999Z",
+          "requiresTicket": false,
+          "capacity": "unlimited",
+          "organizer": {
+            "name": "Community",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        },
+        {
+          "title": "r/VisionPro Drinks Meetup",
+          "description": "Join r/VisionPro members for drinks and networking.",
+          "link": "https://www.reddit.com/r/VisionPro/comments/1cmg3pj/wwdc24_rvisionpro_meetup/",
+          "eventType": "meetup",
+          "startTime": "2024-06-10T17:00:00.000Z",
+          "endTime": "2024-06-10T19:00:00.000Z",
+          "requiresTicket": false,
+          "capacity": "unlimited",
+          "organizer": {
+            "name": "r/VisionPro",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        },
+        {
+          "title": "Students, Swift, St★rs",
+          "description": "A special event for students interested in Swift development.",
+          "link": "https://ti.to/ios-conf-sg/students-swift-stars-2024",
+          "eventType": "conference",
+          "startTime": "2024-06-10T19:00:00.000Z",
+          "endTime": "2024-06-10T21:30:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "iOS Conf SG",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        }
+      ]
+    },
+    {
+      "date": "2024-06-11T00:00:00.000Z",
+      "events": [
+        {
+          "title": "Morning Coffee&Code",
+          "description": "Start your day with coffee and coding discussions.",
+          "link": "https://locals.org/coffeecode-wwdc24-loxb",
+          "eventType": "meetup",
+          "startTime": "2024-06-11T00:00:00.000Z",
+          "endTime": "2024-06-11T23:59:59.999Z",
+          "requiresTicket": false,
+          "capacity": "unlimited",
+          "organizer": {
+            "name": "Community",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        },
+        {
+          "title": "One More Thing Conference",
+          "description": "Attend the One More Thing conference featuring various talks.",
+          "link": "https://omt-conf.com/",
+          "eventType": "conference",
+          "startTime": "2024-06-11T10:00:00.000Z",
+          "endTime": "2024-06-11T17:00:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "One More Thing",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        },
+        {
+          "title": "iOSDevHappyHour @ WWDC24 IRL",
+          "description": "Join iOS developers for a happy hour event during WWDC.",
+          "link": "https://www.eventbrite.com/e/iosdevhappyhour-wwdc24-irl-tickets-890045509077",
+          "eventType": "meetup",
+          "startTime": "2024-06-11T19:00:00.000Z",
+          "endTime": "2024-06-11T22:00:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "iOSDevHappyHour",
+            "twitter": ""
+          },
+          "gatheringType": "informal"
+        }
+      ]
+    },
+    {
+      "date": "2024-06-12T00:00:00.000Z",
+      "events": [
+        {
+          "title": "One More Thing conference",
+          "description": "Continue attending the One More Thing conference with more talks.",
+          "link": "https://omt-conf.com/",
+          "eventType": "conference",
+          "startTime": "2024-06-12T10:00:00.000Z",
+          "endTime": "2024-06-12T17:00:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "One More Thing",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        }
+      ]
+    },
+    {
+      "date": "2024-06-13T00:00:00.000Z",
+      "events": [
+        {
+          "title": "One More Thing conference",
+          "description": "Final day of the One More Thing conference with special event by Paul Hudson.",
+          "link": "https://omt-conf.com/",
+          "eventType": "conference",
+          "startTime": "2024-06-13T10:00:00.000Z",
+          "endTime": "2024-06-13T17:00:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "One More Thing",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        }
+      ]
+    },
+    {
+      "date": "2024-06-14T00:00:00.000Z",
+      "events": [
+        {
+          "title": "One More Thing conference",
+          "description": "Final day of the One More Thing conference with special event by James Dempsey.",
+          "link": "https://omt-conf.com/",
+          "eventType": "conference",
+          "startTime": "2024-06-14T10:00:00.000Z",
+          "endTime": "2024-06-14T17:00:00.000Z",
+          "requiresTicket": true,
+          "capacity": "limited",
+          "organizer": {
+            "name": "One More Thing",
+            "twitter": ""
+          },
+          "gatheringType": "formal"
+        }
+      ]
+    }
+  ]
+  
