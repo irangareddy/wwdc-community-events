@@ -1,0 +1,28 @@
+# Node.js
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# VSCode or IDE configs
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+*.tmp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Auto-generated data
+events.json
+schema-compiled.json
+
+# Environment variables
+.env
+.env.local
+
+# OS or editor metadata
+*.swp
+*~
