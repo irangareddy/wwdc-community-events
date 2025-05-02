@@ -1,0 +1,31 @@
+name: Create PR from Event Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-pr:
+    if: contains(github.event.issue.labels.*.name, 'event submission')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Parse issue and append event
+        run: |
+          mkdir -p tmp
+          echo "${{ toJson(github.event.issue.body) }}" > tmp/issue.json
+          node scripts/from-issue.js tmp/issue.json
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "Add event from issue #${{ github.event.issue.number }}"
+          title: "Add event from issue #${{ github.event.issue.number }}"
+          body: "Automatically generated from issue."
+          branch: "add-event-${{ github.event.issue.number }}"

@@ -1,0 +1,125 @@
+name: Submit a WWDC Event
+description: Add a new WWDC community event
+title: "[Event] "
+labels: ["event submission"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Event Title
+      placeholder: "e.g., Vision Pro Developer Meetup"
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Event Date (ISO format)
+      placeholder: "e.g., 2025-06-10"
+    validations:
+      required: true
+
+  - type: input
+    id: city
+    attributes:
+      label: City
+      placeholder: "e.g., San Francisco"
+    validations:
+      required: true
+
+  - type: input
+    id: country
+    attributes:
+      label: Country
+      placeholder: "e.g., USA"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: eventType
+    attributes:
+      label: Event Type
+      options:
+        - watchParty
+        - conference
+        - workshop
+        - meetup
+        - hackathon
+    validations:
+      required: true
+
+  - type: dropdown
+    id: gatheringType
+    attributes:
+      label: Gathering Type
+      options:
+        - formal
+        - informal
+    validations:
+      required: true
+
+  - type: input
+    id: startTime
+    attributes:
+      label: Start Time (UTC)
+      placeholder: "e.g., 2025-06-10T09:00:00Z"
+    validations:
+      required: true
+
+  - type: input
+    id: endTime
+    attributes:
+      label: End Time (UTC)
+      placeholder: "e.g., 2025-06-10T11:00:00Z"
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Event Link
+      placeholder: "e.g., https://your-event.com"
+    validations:
+      required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: Description
+      placeholder: "Short description of the event"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ticket
+    attributes:
+      label: Ticket Required?
+      options:
+        - Required
+        - Not Required
+    validations:
+      required: true
+
+  - type: dropdown
+    id: capacity
+    attributes:
+      label: Capacity
+      options:
+        - Limited
+        - Not Limited
+    validations:
+      required: true
+
+  - type: input
+    id: organizerName
+    attributes:
+      label: Organizer Name
+      placeholder: "e.g., Jane Developer"
+    validations:
+      required: true
+
+  - type: input
+    id: organizerTwitter
+    attributes:
+      label: Organizer Twitter Handle (optional)
+      placeholder: "@janedeveloper"
