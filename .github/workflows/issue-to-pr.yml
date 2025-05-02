@@ -16,14 +16,23 @@ jobs:
         with:
           node-version: 18
 
+      - name: Log issue details
+        run: |
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Labels: ${{ toJson(github.event.issue.labels) }}"
+          echo "Issue Body: ${{ github.event.issue.body }}"
+
       - name: Parse issue and append event
         run: |
           mkdir -p tmp
+          echo "Parsing issue body and appending event..."
           echo "${{ toJson(github.event.issue.body) }}" > tmp/issue.json
           node scripts/from-issue.js tmp/issue.json
 
       - name: Validate events.json
-        run: npx ajv-cli validate -s schema.json -d events.json
+        run: |
+          echo "Validating events.json against schema.json..."
+          npx ajv-cli validate -s schema.json -d events.json
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
