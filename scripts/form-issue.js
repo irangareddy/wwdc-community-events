@@ -1,32 +1,27 @@
 const fs = require('fs');
 const crypto = require('crypto');
+const Ajv = require('ajv');
 
-// Get the issue JSON file path from command line arguments
+// Read issue body JSON string
 const issueFilePath = process.argv[2];
-
 if (!issueFilePath) {
-  console.error('Usage: node from-issue.js <issue-json-file>');
+  console.error('Usage: node form-issue.js <issue-json-file>');
   process.exit(1);
 }
-
-// Read the issue body from the JSON file
 let issueBody;
 try {
   issueBody = JSON.parse(fs.readFileSync(issueFilePath, 'utf8'));
-} catch (error) {
-  console.error('Error reading issue file:', error);
+} catch (err) {
+  console.error('Error reading issue body:', err);
   process.exit(1);
 }
 
-// Function to extract field values from the issue body
 function extractField(body, fieldName) {
-  // Match patterns like "### Event Title\n\nVision Pro Developer Meetup"
   const regex = new RegExp(`### ${fieldName}\\s*\\n\\s*([^\\n#]+)`, 'i');
   const match = body.match(regex);
   return match ? match[1].trim() : null;
 }
 
-// Extract all the fields
 const event = {
   title: extractField(issueBody, "Event Title"),
   date: extractField(issueBody, "Event Date \\(ISO format\\)"),
@@ -47,70 +42,43 @@ const event = {
   id: crypto.randomUUID()
 };
 
-// Create PR body with the event data in the format expected by process-form.js
-let prBody = `Adding new WWDC community event
+// 🔍 Validate with schema
+const ajv = new Ajv({ allErrors: true });
+const schema = JSON.parse(fs.readFileSync('schema.json', 'utf8'));
+const validate = ajv.compile(schema);
 
-**Event Title:**
-<!--${event.title}-->
-
-**Date (ISO format):**
-<!--${event.date}-->
-
-**Start Time (UTC):**
-<!--${event.startTime}-->
-
-**End Time (UTC):**
-<!--${event.endTime}-->
-
-**Country:**
-<!--${event.country}-->
-
-**City:**
-<!--${event.city}-->
-
-**Event Type:**
-<!--${event.eventType}-->
-
-**Gathering Type:**
-<!--${event.gatheringType}-->
-
-**Ticket Required?:**
-<!--${event.ticket}-->
-
-**Capacity:**
-<!--${event.capacity}-->
-
-**Event Description:**
-<!--${event.description}-->
-
-**Link:**
-<!--${event.link}-->
-
-**Organizer Name:**
-<!--${event.organizer.name}-->
-
-**Twitter (optional):**
-<!--${event.organizer.twitter || ''}-->
-`;
-
-// Create or update events.json
-let events = [];
-try {
-  if (fs.existsSync('events.json')) {
-    events = JSON.parse(fs.readFileSync('events.json', 'utf8'));
-  }
-} catch (error) {
-  console.log('No existing events.json found or error reading it. Creating new one.');
+if (!validate(event)) {
+  console.error('❌ Schema validation failed:');
+  console.error(validate.errors);
+  process.exit(1);
 }
 
-// Add new event
+// ✅ Add to events.json
+let events = [];
+if (fs.existsSync('events.json')) {
+  events = JSON.parse(fs.readFileSync('events.json', 'utf8'));
+}
 events.push(event);
-
-// Save updated events to events.json
 fs.writeFileSync('events.json', JSON.stringify(events, null, 2));
 
-// Also save the PR body to a file for the GitHub action to use
-fs.writeFileSync('tmp/pr-body.txt', prBody);
+// ✅ Write PR body
+const prBody = `Adding new WWDC community event
 
-console.log('✅ Event processed and added to events.json');
-console.log('✅ PR body created');
+**Event Title:**\n<!--${event.title}-->
+**Date (ISO format):**\n<!--${event.date}-->
+**Start Time (UTC):**\n<!--${event.startTime}-->
+**End Time (UTC):**\n<!--${event.endTime}-->
+**Country:**\n<!--${event.country}-->
+**City:**\n<!--${event.city}-->
+**Event Type:**\n<!--${event.eventType}-->
+**Gathering Type:**\n<!--${event.gatheringType}-->
+**Ticket Required?:**\n<!--${event.ticket}-->
+**Capacity:**\n<!--${event.capacity}-->
+**Event Description:**\n<!--${event.description}-->
+**Link:**\n<!--${event.link}-->
+**Organizer Name:**\n<!--${event.organizer.name}-->
+**Twitter (optional):**\n<!--${event.organizer.twitter || ''}-->`;
+
+fs.mkdirSync('tmp', { recursive: true });
+fs.writeFileSync('tmp/pr-body.txt', prBody);
+console.log('✅ Event validated, added, and PR body created');
