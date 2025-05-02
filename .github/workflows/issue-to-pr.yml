@@ -8,33 +8,31 @@ jobs:
   create-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: 18
+          python-version: '3.x'
 
-      - name: Log issue details
+      - name: 📝 Log issue details
         run: |
-          echo "Issue Title: ${{ github.event.issue.title }}"
-          echo "Issue Labels: ${{ toJson(github.event.issue.labels) }}"
+          echo "🧾 Issue Title: ${{ github.event.issue.title }}"
+          echo "🏷️ Issue Labels: ${{ toJson(github.event.issue.labels) }}"
 
-      - name: Parse issue and create PR body
+      - name: 📦 Install Python dependencies
+        run: pip install jsonschema
+
+      - name: 🧠 Parse issue and update events.json
         run: |
+          echo "🗂️ Creating tmp/ directory..."
           mkdir -p tmp
-          echo '${{ toJson(github.event.issue.body) }}' > tmp/issue.json
-          node scripts/form-issue.js tmp/issue.json
+          echo "${{ github.event.issue.body }}" > tmp/issue.md
+          echo "📄 Parsing issue with form_issue.py..."
+          python3 scripts/form_issue.py tmp/issue.md
 
-      - name: Install dependencies for validation
-        run: npm install ajv-cli
-
-      - name: Validate events.json
-        run: |
-          echo "Validating events.json against schema.json..."
-          npx ajv-cli validate -s schema.json -d events.json || echo "Validation failed, but continuing with PR creation"
-
-      - name: Create Pull Request
+      - name: 🚀 Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "Add event from issue #${{ github.event.issue.number }}"
