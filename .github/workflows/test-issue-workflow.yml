@@ -1,0 +1,51 @@
+name: Test Issue Processing
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+
+jobs:
+  print-issue-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Hello World
+        run: echo "Hello World! This workflow is running."
+
+      - name: Print issue information
+        run: |
+          echo "Issue triggered the workflow!"
+          echo "Issue number: ${{ github.event.issue.number }}"
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue state: ${{ github.event.issue.state }}"
+          echo "Issue created at: ${{ github.event.issue.created_at }}"
+          
+      - name: Print issue labels
+        run: |
+          echo "Issue labels:"
+          echo '${{ toJson(github.event.issue.labels) }}'
+          
+      - name: Print repository info
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Owner: ${{ github.repository_owner }}"
+          
+      - name: Count open issues
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open'
+            });
+            console.log(`Total open issues: ${issues.length}`);
+            
+            // Print the titles of up to 5 recent issues
+            const recentIssues = issues.slice(0, 5);
+            console.log('Recent issues:');
+            recentIssues.forEach(issue => {
+              console.log(`- #${issue.number}: ${issue.title}`);
+            });
