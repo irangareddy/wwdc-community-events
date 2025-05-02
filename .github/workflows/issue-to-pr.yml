@@ -6,7 +6,6 @@ on:
 
 jobs:
   create-pr:
-    if: contains(join(',', github.event.issue.labels.*.name), 'event submission')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
