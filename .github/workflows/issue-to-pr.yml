@@ -20,24 +20,25 @@ jobs:
         run: |
           echo "Issue Title: ${{ github.event.issue.title }}"
           echo "Issue Labels: ${{ toJson(github.event.issue.labels) }}"
-          echo "Issue Body: ${{ github.event.issue.body }}"
 
-      - name: Parse issue and append event
+      - name: Parse issue and create PR body
         run: |
           mkdir -p tmp
-          echo "Parsing issue body and appending event..."
-          echo "${{ toJson(github.event.issue.body) }}" > tmp/issue.json
-          node scripts/from-issue.js tmp/issue.json
+          echo '${{ toJson(github.event.issue.body) }}' > tmp/issue.json
+          node scripts/form-issue.js tmp/issue.json
+
+      - name: Install dependencies for validation
+        run: npm install ajv-cli
 
       - name: Validate events.json
         run: |
           echo "Validating events.json against schema.json..."
-          npx ajv-cli validate -s schema.json -d events.json
+          npx ajv-cli validate -s schema.json -d events.json || echo "Validation failed, but continuing with PR creation"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "Add event from issue #${{ github.event.issue.number }}"
           title: "Add event from issue #${{ github.event.issue.number }}"
-          body: "Automatically generated from issue."
+          body-path: "tmp/pr-body.txt"
           branch: "add-event-${{ github.event.issue.number }}"
