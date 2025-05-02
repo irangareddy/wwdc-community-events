@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "title": "Pre-WWDC Bashcade",
+    "date": "2025-06-08",
+    "startTime": "2025-06-09T01:30:00Z",
+    "endTime": "2025-06-09T06:00:00Z",
+    "country": "USA",
+    "city": "San Jose",
+    "eventType": "meetup",
+    "gatheringType": "informal",
+    "ticket": "Required",
+    "capacity": "Limited",
+    "description": "Join the legendary Pre-WWDC Bashcade at Miniboss in San Jose for an evening of arcade games, food, drinks, and community fun before WWDC!",
+    "link": "https://lu.ma/94pquugz",
+    "organizer": {
+      "name": "RevenueCat Events",
+      "twitter": ""
+    },
+    "id": "5d4521e6-681b-4b72-961e-5c12ffc967a2"
+  }
+]
