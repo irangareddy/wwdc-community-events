@@ -19,6 +19,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Ensure events.json exists
+        run: |
+          if [ ! -f events.json ]; then
+            echo "[]" > events.json
+          fi
+
       - name: Extract and validate event from PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

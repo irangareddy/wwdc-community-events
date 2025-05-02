@@ -22,6 +22,9 @@ jobs:
           echo "${{ toJson(github.event.issue.body) }}" > tmp/issue.json
           node scripts/from-issue.js tmp/issue.json
 
+      - name: Validate events.json
+        run: npx ajv-cli validate -s schema.json -d events.json
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
