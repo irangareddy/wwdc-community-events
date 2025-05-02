@@ -1,0 +1,24 @@
+{
+    "name": "wwdc-community-events",
+    "version": "1.0.0",
+    "description": "A repository to track WWDC community events",
+    "main": "scripts/form-issue.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "validate": "ajv validate -s schema.json -d events.json"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/irangareddy/wwdc-community-events.git"
+    },
+    "keywords": [
+      "wwdc",
+      "events",
+      "community"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "ajv-cli": "^5.0.0"
+    }
+  }
