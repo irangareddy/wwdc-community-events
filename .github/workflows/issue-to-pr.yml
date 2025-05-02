@@ -2,7 +2,7 @@ name: Create PR from Event Issue
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   create-pr:
