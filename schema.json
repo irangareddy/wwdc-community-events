@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "date": {
+        "type": "string",
+        "format": "date"
+      },
+      "country": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "link": {
+        "type": "string",
+        "format": "uri"
+      },
+      "eventType": {
+        "type": "string",
+        "enum": ["watchParty", "conference", "workshop", "meetup", "hackathon"]
+      },
+      "startTime": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "endTime": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "ticket": {
+        "type": "string",
+        "enum": ["Required", "Not Required"]
+      },
+      "capacity": {
+        "type": "string",
+        "enum": ["Limited", "Not Limited"]
+      },
+      "organizer": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "twitter": { "type": "string" }
+        },
+        "required": ["name"]
+      },
+      "gatheringType": {
+        "type": "string",
+        "enum": ["formal", "informal"]
+      },
+      "id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "date",
+      "country",
+      "city",
+      "title",
+      "description",
+      "link",
+      "eventType",
+      "startTime",
+      "endTime",
+      "ticket",
+      "capacity",
+      "organizer",
+      "gatheringType",
+      "id"
+    ]
+  }
+  
