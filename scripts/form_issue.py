@@ -18,6 +18,7 @@ def extract(label):
     match = re.search(pattern, body, re.DOTALL)
     return match.group(1).strip() if match else ""
 
+# Extract event fields
 event = {
     "title": extract("Event Title"),
     "date": extract("Event Date (ISO format)"),
@@ -38,7 +39,7 @@ event = {
     "id": str(uuid.uuid4())
 }
 
-# Load and validate against schema
+# Validate against schema
 with open("schema.json") as f:
     schema = json.load(f)
 
@@ -49,17 +50,48 @@ except ValidationError as e:
     print(e)
     sys.exit(1)
 
-# Load and append to events.json
+# Load and update events.json
 events_file = Path("events.json")
 events = []
 if events_file.exists():
-    with open(events_file) as f:
-        events = json.load(f)
-
+    events = json.loads(events_file.read_text())
 events.append(event)
 
-# Save result
 with open(events_file, "w") as f:
     json.dump(events, f, indent=2)
 
 print("✅ Event added and validated")
+
+# Generate Markdown PR body
+pr_body = f"""## 🆕 New WWDC Community Event Submitted
+
+| Field              | Value |
+|-------------------|-------|
+| **Title**          | {event['title']} |
+| **Date**           | {event['date']} |
+| **Start Time**     | {event['startTime']} |
+| **End Time**       | {event['endTime']} |
+| **Country**        | {event['country']} |
+| **City**           | {event['city']} |
+| **Event Type**     | {event['eventType']} |
+| **Gathering Type** | {event['gatheringType']} |
+| **Ticket**         | {event['ticket']} |
+| **Capacity**       | {event['capacity']} |
+| **Description**    | {event['description']} |
+| **Link**           | [{event['link']}]({event['link']}) |
+| **Organizer**      | {event['organizer']['name']} |
+| **Twitter**        | {event['organizer']['twitter'] or '*(none)*'} |
+
+---
+
+✅ This event has been auto-validated and added to `events.json`.  
+Maintainers can review and merge the PR to publish it in the live feed.
+"""
+
+# Write PR body to tmp/pr-body.txt
+tmp_dir = Path("tmp")
+tmp_dir.mkdir(exist_ok=True)
+with open(tmp_dir / "pr-body.txt", "w") as f:
+    f.write(pr_body)
+
+print("📄 PR body saved to tmp/pr-body.txt")
