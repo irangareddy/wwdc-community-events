@@ -18,7 +18,7 @@ jobs:
 
       - name: 📝 Log issue details
         run: |
-          echo "🧾 Issue Title: ${{ github.event.issue.title }}"
+          echo "🧾 Issue Title: [${{ github.event.issue.title }}]"
           echo "🏷️ Issue Labels: ${{ toJson(github.event.issue.labels) }}"
 
       - name: 📦 Install Python dependencies
