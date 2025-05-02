@@ -15,12 +15,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
-      - name: 📝 Log issue details
-        run: |
-          echo "🧾 Issue Title: [${{ github.event.issue.title }}]"
-          echo "🏷️ Issue Labels: ${{ toJson(github.event.issue.labels) }}"
-
       - name: 📦 Install Python dependencies
         run: pip install jsonschema
 
